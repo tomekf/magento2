@@ -1,0 +1,55 @@
+version: '3'
+services:
+    php_mag:
+        build: php-fpm
+        ports:
+            - '7421:9000'
+        volumes:
+            - ../:/var/www/preparation/magento2
+        links:
+            - db_mag
+        networks:
+            my_net:
+                ipv4_address: 174.28.1.21
+    nginx_mag:
+        build: nginx
+        ports:
+            - '7432:80'
+        links:
+            - php_mag
+        hostname: magento2
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+            - ../:/var/www/preparation/magento2
+        networks:
+            my_net:
+                ipv4_address: 174.28.1.22
+    phpmyadmin_mag:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "7433:80"
+        environment:
+            PMA_HOST: db_mag       
+        networks:
+            my_net:
+                ipv4_address: 174.28.1.23
+    db_mag:
+        image: mysql:5.7
+        ports:
+            - 7434:3306
+        volumes:
+            - ./data:/docker-entrypoint-initdb.d/
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: magento
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        networks:
+            my_net:
+                ipv4_address: 174.28.1.24
+networks:
+    my_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 174.28.1.0/16
