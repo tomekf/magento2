@@ -5,7 +5,7 @@ services:
         ports:
             - '7421:9000'
         volumes:
-            - ../:/var/www/preparation/magento2
+            - ../:/var/www/magento2
         links:
             - db_mag
         networks:
@@ -20,7 +20,7 @@ services:
         hostname: magento2
         volumes:
             - ./logs/nginx/:/var/log/nginx
-            - ../:/var/www/preparation/magento2
+            - ../:/var/www/magento2
         networks:
             my_net:
                 ipv4_address: 174.28.1.22

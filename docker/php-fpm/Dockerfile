@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    libpng-dev \
     libxslt1-dev \
     mysql-client \
     zip \
@@ -39,23 +39,10 @@ RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer &
 ENV ACCEPT_EULA=Y
 
 # Microsoft SQL Server Prerequisites
-RUN apt-get update \
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/debian/8/prod.list \
-        > /etc/apt/sources.list.d/mssql-release.list \
-    && apt-get install -y --no-install-recommends \
-        locales \
-        apt-transport-https \
-    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-    && locale-gen \
-    && apt-get update \
-    && apt-get -y --no-install-recommends install \
-        msodbcsql \
-        unixodbc-dev
 
-RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql \
-    && pecl install sqlsrv pdo_sqlsrv xdebug \
-    && docker-php-ext-enable sqlsrv pdo_sqlsrv xdebug
+#RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql \
+#    && pecl install sqlsrv pdo_sqlsrv xdebug \
+#    && docker-php-ext-enable sqlsrv pdo_sqlsrv xdebug
 
 
 ENV PHP_MEMORY_LIMIT 2G
@@ -65,4 +52,4 @@ RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 RUN printf '[PHP]\ndate.timezone = "Europe/Warsaw"\n' > /usr/local/etc/php/conf.d/tzone.ini
 
-WORKDIR /var/www/preparation/magento2
+WORKDIR /var/www/magento2
