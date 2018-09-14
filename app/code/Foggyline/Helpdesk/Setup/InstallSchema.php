@@ -1,6 +1,6 @@
 <?php
 
-namesmacpe Foggyline\Helpdesk\Setup;
+namespace Foggyline\Helpdesk\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -68,9 +68,6 @@ class InstallSchema implements InstallSchemaInterface
                 'entity_id',
                 Table::ACTION_SET_NULL
             )
-            ->addColumne('created_at',)
-                ->addIndex()
-                ->addForeignKey()
             ->setComment('Foggyline Helpdesk Ticket');
             $installer->getConnection()->createTable($table);
             $installer->endSetup();
