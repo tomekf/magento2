@@ -2,7 +2,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="foggyline_helpdesk_ticket_listing"/>
+            <uiComponent name="mageplaza_helloworld_post_listing"/>
         </referenceContainer>
     </body>
 </page>

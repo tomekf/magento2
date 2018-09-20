@@ -14,7 +14,7 @@ class InstallSchema implements InstallSchemaInterface
         $setup->startSetup();
         $tableName = $setup->getTable('toptal_blog_post');
 
-        $context->getVersion()
+        $context->getVersion();
         if ($setup->getConnection()->isTableExists($tableName) != true) {
             $table = $setup->getConnection()
                 ->newTable($tableName)
