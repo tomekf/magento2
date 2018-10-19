@@ -1,8 +1,8 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">mageplaza_helloworld_post_listing.mageplaza_helloworld_post_listing_data_source</item>
-            <item name="deps" xsi:type="string">mageplaza_helloworld_post_listing.mageplaza_helloworld_post_listing_data_source</item>
+            <item name="provider" xsi:type="string">foggyline_helpdesk_post_listing.foggyline_helpdesk_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">foggyline_helpdesk_post_listing.foggyline_helpdesk_post_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">spinner_columns</item>
         <item name="buttons" xsi:type="array">
@@ -17,7 +17,7 @@
     <dataSource name="nameOfDataSource">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">mageplaza_helloworld_post_listing_data_source</argument>
+            <argument name="name" xsi:type="string">foggyline_helpdesk_post_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">post_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
@@ -53,7 +53,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>
+                        <item name="url" xsi:type="url" path="foggyline_helpdesk/post/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Post</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>

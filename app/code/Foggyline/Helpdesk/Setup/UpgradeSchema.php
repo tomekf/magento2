@@ -12,18 +12,22 @@ class UpgradeSchema implements UpgradeSchemaInterface
 {
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-       if (version_compare($context->getVersion(), '1.0.1', '<')) {
+
+//        var_dump((version_compare($context->getVersion(), '1.0.7', '<')));
+//        var_dump($context->getVersion());
+//        die('ccc');
+//       if (version_compare($context->getVersion(), '1.0.7', '<')) {
            $this->upgrade101($setup);
-       }
+//       }
     }
 
     protected function upgrade101($setup)
     {
         $installer = $setup;
         $installer->startSetup();
-        if (!$installer->tableExists('mageplaza_helloworld_post')) {
+        if (!$installer->tableExists('foggyline_helpdesk_post')) {
             $table = $installer->getConnection()->newTable(
-                $installer->getTable('mageplaza_helloworld_post')
+                $installer->getTable('foggyline_helpdesk_post')
             )
                 ->addColumn(
                     'post_id',
